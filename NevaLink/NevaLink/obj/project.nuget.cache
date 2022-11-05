@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "oCcOTAvqd/MbZpTcIKotP4D8xb5H4W/Cz1m4ebif5EDyOQXESbtG/htuA/jpWSG62Pk680tJkv5UNp+qWgm7gw==",
+  "success": true,
+  "projectFilePath": "D:\\Курсовая\\update\\NevaLink\\NevaLink\\NevaLink\\NevaLink.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\wpdtf\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\wpdtf\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\wpdtf\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\wpdtf\\.nuget\\packages\\xamarin.essentials\\1.7.0\\xamarin.essentials.1.7.0.nupkg.sha512",
+    "C:\\Users\\wpdtf\\.nuget\\packages\\xamarin.forms\\5.0.0.2196\\xamarin.forms.5.0.0.2196.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NevaLink.Chat">
+    <ContentPage.Content>
+        <ScrollView Orientation="Vertical">
+            <StackLayout Padding="10" HorizontalOptions="Fill" VerticalOptions="StartAndExpand">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="150" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="100" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                </Grid>
+                <Frame CornerRadius="10" Grid.Row="0" Grid.Column="0" x:Name="frame1" Padding="15" Margin="5" VerticalOptions="StartAndExpand">
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                        <Image Source="logo.png" x:Name="imageRate" Margin="5, 5, 10, 5" WidthRequest="150" />
+                        <StackLayout VerticalOptions="Center">
+                            <Label Text="" x:Name="titleHelp" FontSize="Medium" />
+                            <Label Text="" x:Name="middleHelp" FontSize="Medium" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <Frame CornerRadius="10" Grid.Row="1" x:Name="frame2" Grid.Column="0" Padding="15" HeightRequest="300" Margin="5" VerticalOptions="Fill">
+                    <ScrollView Orientation="Vertical">
+                        <StackLayout>
+                            <Editor x:Name="textChat" VerticalOptions="Fill" AutoSize="TextChanges"  IsReadOnly="True" IsTextPredictionEnabled="False" FontSize="Body" />
+                        </StackLayout>
+                    </ScrollView>
+        </Frame>
+                <Frame CornerRadius="10" Grid.Row="2" x:Name="frame3" Grid.Column="0" Padding="15" Margin="5" >
+                    <StackLayout>
+                        <Editor AutoSize="TextChanges" Text=""  MaxLength="200" x:Name="textToChat" Placeholder="Ваше сообщение" />
+                        <Button x:Name="BtnChat" Margin="2" Clicked="btnChat" Text="Отправить" WidthRequest="130" CornerRadius="10" />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

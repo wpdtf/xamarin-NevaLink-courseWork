@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NevaLink.UpdateRate">
+    <ScrollView Orientation="Vertical">
+        <StackLayout Orientation="Vertical" Padding="10" VerticalOptions="Center" HorizontalOptions="Center">
+            <Image Source="logo.png" WidthRequest="210" Margin="10" />
+
+            <Line X1="5" Y1="0" X2="200" Y2="0" StrokeThickness="3" Margin="2" x:Name="line1" VerticalOptions="Center" HorizontalOptions="Center" />
+
+            <Label Text="Название" x:Name="titleRate" FontSize="Medium" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+            <Label Text="Описание" x:Name="titleRateDiscription" FontSize="Medium" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+            <Label Text="Цена" x:Name="titleRatePrica" FontSize="Medium" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+
+            <Label Text="Укажите мобильный номер телефона, с вами свяжется тех. специалист для уточнения времени подключения" FontSize="Subtitle" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+            <Entry Text="" Placeholder="Номер телефона" Keyboard="Telephone" x:Name="telephone" />
+
+            <Label Text="Выберете свой адрес, если вашего дома нет, то по вашему адресу мы не оказываем услуг." FontSize="15" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+            <Picker x:Name="picCity" Title="Город" SelectedIndexChanged="selCity" />
+            <Picker x:Name="picStreet" Title="Улица" SelectedIndexChanged="selStreet" IsEnabled="False" />
+            <Picker x:Name="picHome" Title="Дом" SelectedIndexChanged="selHome" IsEnabled="False" />
+
+
+            <Label Text="Кнопка станет активной после выбора адреса" x:Name="labelErr" FontSize="Subtitle" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+            <Button x:Name="BtnRate" Margin="3" IsEnabled="False" Clicked="updateTar" Text="Подключить" HeightRequest="50" WidthRequest="130" CornerRadius="10" />
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NevaLink.Menu">
+    <ContentPage.Content>
+        <ScrollView Orientation="Vertical">
+            <StackLayout Padding="10" HorizontalOptions="Fill" VerticalOptions="StartAndExpand" x:Name="childrensMenu">
+                <Frame CornerRadius="10" x:Name="frameTitle" Padding="15" Margin="5" VerticalOptions="StartAndExpand">
+                    <StackLayout>
+                        <Image Source="logo2.png" WidthRequest="190" Margin="30, 30, 30, 35" />
+                        
+                        <Label Text="Пользователь:" FontSize="Title" />
+                        <Label Text="" x:Name="titleName" FontSize="Medium" />
+                        <Label Text="Место оказания услуг:" FontSize="Title" />
+                        <Label Text="" x:Name="titleHome" FontSize="Medium" />
+                        <Label Text="Дата регистрации:" FontSize="Title" />
+                        <Label Text="" x:Name="titleDate" FontSize="Medium" />
+                    </StackLayout>
+                </Frame>
+                <Frame CornerRadius="10" x:Name="frameRate" Padding="15" Margin="5" IsVisible="false">
+                    <StackLayout>
+                        <Image Source="ethernet.png" x:Name="imageRate" Margin="30, 30, 30, 5" WidthRequest="220" />
+                        
+                        <Label Text="Текущий тариф:" FontSize="Title" />
+                        <Label Text="" x:Name="titleRateName" FontSize="Medium" />
+                        <Label Text="Описание тарифа:" FontSize="Title" />
+                        <Label Text="" x:Name="titleRateDescription" FontSize="Medium" />
+                        <Label Text="Стоимость (месяц):" FontSize="Title" />
+                        <Label Text="" x:Name="titleRatePrice" FontSize="Medium" />
+                        <Button x:Name="BtnHelpSys" Margin="3" Clicked="btnHelpSys" Text="Техническая поддержка" WidthRequest="130" CornerRadius="10" />
+                    </StackLayout>
+                </Frame>
+                <Frame CornerRadius="10" x:Name="frameRate2" Padding="15" Margin="5" >
+                    <StackLayout>
+                        <Image Source="rate.png" Margin="10" WidthRequest="350" />
+                    </StackLayout>
+                </Frame>
+                
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

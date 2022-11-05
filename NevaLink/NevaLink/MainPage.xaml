@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NevaLink.MainPage">
+    <ScrollView Orientation="Vertical">
+        <StackLayout Orientation="Vertical" Padding="10" VerticalOptions="Center" HorizontalOptions="Center">
+            <Image Source="logo.png" WidthRequest="210" Margin="10" />
+
+            <Line X1="5" Y1="0" X2="200" Y2="0" StrokeThickness="3" Margin="2" x:Name="line1" VerticalOptions="Center" HorizontalOptions="Center" />
+
+            <Entry x:Name="name" Margin="2" Placeholder="Имя *" WidthRequest="150" Text="" />
+            <Entry x:Name="family" Margin="2" Placeholder="Фамилия *" WidthRequest="150" Text="" />
+            <Entry x:Name="middlename" Margin="2" Placeholder="Отчество" WidthRequest="150" Text="" />
+
+            <Line X1="5" Y1="0" X2="200" Y2="0" StrokeThickness="3" Margin="2" x:Name="line2" VerticalOptions="Center" HorizontalOptions="Center" />
+            <Label Text="ошибки" x:Name="labelErrs" FontSize="15" IsVisible="False" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+            <Entry x:Name="login" Margin="2" Placeholder="Логин *" WidthRequest="150" Text="" />
+            <Entry x:Name="password1" Margin="2" Placeholder="Пароль *" WidthRequest="150" Text="" IsPassword="True" />
+            <Entry x:Name="password2" Margin="2" Placeholder="Подтвердите пароль *" WidthRequest="150" Text="" IsPassword="True" />
+
+
+            <Label Text="поля отмеченные * обязательные" x:Name="labelErr" FontSize="15" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+            <Button x:Name="BtnRegist" Margin="3" Clicked="btnRegistrat" Text="Создать аккаунт" WidthRequest="130" CornerRadius="10" />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
