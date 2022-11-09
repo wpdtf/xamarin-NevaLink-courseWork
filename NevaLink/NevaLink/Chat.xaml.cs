@@ -3,6 +3,10 @@ using System.Threading;
 using Xamarin.Forms;
 using Xamarin.Essentials;
 using Xamarin.Forms.Xaml;
+using System.Data.SqlTypes;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace NevaLink
 {
@@ -46,7 +50,7 @@ namespace NevaLink
             if (resultComplaint[0][0] == "No")
             {
                 middleHelp.Text = "Обращений нет";
-                textChat.Text = "";
+                //textChat.Text = "";
                 
             }
             else
@@ -71,9 +75,84 @@ namespace NevaLink
                     Console.WriteLine(resultComplaint);
                     string result = "";
                     bool isActive = false;
+                    StackLayout st = new StackLayout();
                     for (int i = 1; i < resultComplaint.Length; i++)
                     {
-                        result += "👤 " + resultComplaint[i][4] + " " + resultComplaint[i][1] + " " + resultComplaint[i][2] + ":\n" + resultComplaint[i][3]+"\n";
+                        
+                        StackLayout st2 = new StackLayout();
+
+                        Editor ed = new Editor();
+                        ed.AutoSize = EditorAutoSizeOption.TextChanges;
+                        ed.IsReadOnly = true;
+                        st2.WidthRequest = 150;
+                        ed.WidthRequest = 150;
+                        ed.FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
+                        Label lb = new Label();
+                        lb.FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label));
+                        lb.WidthRequest = 150;
+
+                        string hours = resultComplaint[i][4];
+                        string minute = resultComplaint[i][5];
+                        if (hours.Length == 1)
+                            hours = "0" + hours;
+                        if (minute.Length == 1)
+                            minute = "0" + minute;
+
+                        if (resultComplaint[i][6] == idHelper)
+                        {
+                            if (resultComplaint[i][3] != "IMAGESSEND")
+                            {
+                                ed.Text = resultComplaint[i][3];
+                                lb.Text = resultComplaint[i][1] + " " + resultComplaint[i][2] + " " + hours + ":" + minute;
+
+                                st2.Children.Add(ed);
+                                st2.Children.Add(lb);
+                                st2.HorizontalOptions = LayoutOptions.Start;
+                            }
+                            else
+                            {
+                                Image im = new Image();
+                                im.WidthRequest = 150;
+                                string ImageS = resultComplaint[i][10];
+                                byte[] imageByte = ImageS.Split(';').Select(a => byte.Parse(a)).ToArray();
+                                im.Source = ImageSource.FromStream(() =>
+                                {
+                                    return new MemoryStream(imageByte);
+                                });
+                                lb.Text = resultComplaint[i][1] + " " + resultComplaint[i][2] + " " + hours + ":" + minute;
+                                st2.Children.Add(im);
+                                st2.Children.Add(lb);
+                                st2.HorizontalOptions = LayoutOptions.Start;
+                            }
+                        }
+                        else
+                        {
+                            if (resultComplaint[i][3] != "IMAGESSEND")
+                            {
+                                ed.Text = resultComplaint[i][3];
+                                lb.Text = "вы " + hours + ":" + minute;
+
+                                st2.Children.Add(ed);
+                                st2.Children.Add(lb);
+                                st2.HorizontalOptions = LayoutOptions.End;
+                            }
+                            else
+                            {
+                                Image im = new Image();
+                                im.WidthRequest = 150;
+                                string ImageS = resultComplaint[i][10];
+                                byte[] imageByte = ImageS.Split(';').Select(a => byte.Parse(a)).ToArray();
+                                im.Source = ImageSource.FromStream(() =>
+                                {
+                                    return new MemoryStream(imageByte);
+                                });
+                                lb.Text = "вы " + hours + ":" + minute;
+                                st2.Children.Add(im);
+                                st2.Children.Add(lb);
+                                st2.HorizontalOptions = LayoutOptions.End;
+                            }
+                        }
+                        st.Children.Add(st2);
                         if (resultComplaint[i][3] == "Ваше обращение переведено на старшего сотрудника!")
                         {
                             _isChat = false;
@@ -93,8 +172,9 @@ namespace NevaLink
                         });
                     MainThread.BeginInvokeOnMainThread(() =>
                     {
-                        textChat.Text = result;    
-                     });
+                        chats.Children.Clear();
+                        chats.Children.Add(st);
+                    });
                 }
                 else
                 {
@@ -134,13 +214,14 @@ namespace NevaLink
             
         }
 
+
         private void btnChat(object sender, System.EventArgs e)
         {
             if (textToChat.Text != "" && textToChat.Text != " ")
             {
                 if (_isChat)
                 {
-                    string[][] resultComplaint = ServerApi.tableFunc("insert into Chat values (" + -security.ID + ", " + idHelper + ", GETDATE(), '" + textToChat.Text + "', "+ Complaint + ");");
+                    string[][] resultComplaint = ServerApi.tableFunc("insert into Chat values (" + -security.ID + ", " + idHelper + ", GETDATE(), '" + textToChat.Text + "', "+ Complaint + ", null);");
                     textToChat.Text = "";
                 }
                 else
